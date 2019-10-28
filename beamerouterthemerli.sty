@@ -1,0 +1,20 @@
+\mode<presentation>
+
+% Frame title
+\defbeamertemplate*{frametitle}{rli}[1][]
+{
+  \begin{tikzpicture}
+  \useasboundingbox (0,0) rectangle(0.9*\the\paperwidth,0.15*\paperheight); 
+  \fill[white] (0,0) rectangle(0.8*\the\paperwidth,1.2);
+
+  \draw (0,0) -- (0.79\paperwidth,0);
+   \ifx\insertframesubtitle\@empty%
+      {\node[anchor=west,font=\large] at (0,0.61){\insertframetitle};}
+      \else%
+      {\node[anchor= west,font=\large] at (0,0.81){\insertframetitle};%
+       \node[anchor= west,font=\small] at (0,0.41){\insertframesubtitle};}%
+      \fi
+  \end{tikzpicture}
+}
+
+\mode<all>

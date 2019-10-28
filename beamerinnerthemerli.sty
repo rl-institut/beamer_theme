@@ -1,0 +1,102 @@
+\mode<presentation>
+\usetikzlibrary{calc} 
+
+% Itemize environment
+\setbeamertemplate{itemize item}{\color{rliblue}$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{\color{rliblue}$\blacktriangleright$}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}[numbered]
+
+% Logo in headline
+\addtobeamertemplate{headline}{}{%
+\begin{tikzpicture}[remember picture,overlay]
+\node at([shift={(.42\paperwidth,-.82)}]current page.north) {\includegraphics[scale=0.1]{img/RLI_logo.pdf}};
+\end{tikzpicture}}
+
+% Title page background image and clipping
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+  \node[anchor=south east,inner sep=0] (picture) at (\the\paperwidth,0) {\includegraphics[width=0.7\paperwidth]{img/createria-ZYu6P9-Glic-unsplash_resized.jpg}};
+
+  % coordinates
+  \def \halfWidthBar{4pt};
+  \def \blockWidth{90pt};
+
+  \coordinate (paperTL) at (0,\paperheight);
+  \coordinate (paperTR) at (\paperwidth,\paperheight);
+  \coordinate (paperBL) at (0,0);
+  \coordinate (paperBR) at (\paperwidth,0);
+  
+  % White triangle (1)
+  \coordinate (w1bL) at (0.3\paperwidth,0);
+  \coordinate (w1tL) at (0.3\paperwidth,\paperheight);
+  \coordinate (w1tR) at (0.3\paperwidth+\paperheight,\paperheight);
+  
+  % Crossing point
+  \coordinate (midCross) at ($(w1bL)!0.55!(w1tR)$);
+  
+  % Box in "rliblue"
+  \coordinate (brS) at ($ (midCross) + (-\halfWidthBar,\halfWidthBar) $);
+  \coordinate (brW) at ($(brS)!\blockWidth+2*\halfWidthBar!90:(w1tR)$);
+  \coordinate (helpPoint1) at ($(brW)!5\blockWidth!90:(brS)$);
+  \coordinate (brN) at (intersection of brW--helpPoint1 and paperTL--paperTR);
+  \coordinate (brE) at ($ (w1tR) + ({-2*\halfWidthBar},0) $);
+  
+  % White bar (2)
+  \coordinate (helpPoint2) at ($(midCross)!5\blockWidth!-90:(w1tR)$);
+  \coordinate (helpPoint3) at ($(midCross)!5\blockWidth!90:(w1tR)$);
+  \coordinate (w2tR) at (intersection of midCross--helpPoint3 and paperTL--paperTR);
+  
+  % Upper picture part
+  \coordinate (picUpN) at ($(midCross)!\blockWidth!0:(w1tR)$);
+  \coordinate (picUpE) at ($(picUpN)!1.4*\blockWidth!90:(midCross)$);
+  \coordinate (picUpS) at ($(picUpE)!\blockWidth!90:(picUpN)$);
+
+  % Box in "rligray"
+  \coordinate (bgS) at (intersection of midCross--helpPoint2 and paperBL--paperBR);
+  \coordinate (bgW) at ($ (picUpS) + (\halfWidthBar,-\halfWidthBar) $);
+  \coordinate (helpPoint4) at ($(bgW)!5\blockWidth!90:(bgS)$);
+  \coordinate (bgN) at (intersection of bgW--helpPoint4 and paperTR--paperBR);
+  %
+
+  % Draw all the boxes
+  \filldraw[draw=white,fill=white] (w1bL) -- (w1tL) -- (w1tR) -- cycle;
+  \filldraw[draw=none,fill=rliblue] (brS) -- (brW) -- (brN) -- (brE) -- cycle;
+  \filldraw[draw=white,fill=white] (w2tR) -- (bgS) -- ($ (bgS) + ({-2*\halfWidthBar},0) $) -- ($ (w2tR) + ({-2*\halfWidthBar},0) $) -- cycle;
+  \filldraw[draw=white,fill=white] (picUpN) -- (w1tR) -- (paperTR) -- (bgN) -- (bgW) -- (picUpS) -- (picUpE) -- cycle;
+  \filldraw[draw=none,fill=rligray!15] (bgS) -- (bgW) -- (bgN) -- (paperBR) -- cycle;
+  
+  \draw (1,0.67\paperheight) -- (0.5\textwidth,0.67\paperheight);
+  
+
+  \ifnum\thepage>1\relax%
+   \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+   \fi
+  \end{tikzpicture}
+}
+
+% Title page text
+\defbeamertemplate*{title page}{texsx}[1][]
+{ 
+\begin{picture}(0,0)
+            \put(0,-110.7){%
+                \begin{minipage}[b][45mm][t]{.5\textwidth}
+                    \usebeamerfont{title}{\textbf{\inserttitle}\par}
+                    \usebeamerfont{subtitle}{\insertsubtitle\par\vspace{0.5cm}}
+                    \usebeamerfont{author}{\insertauthor\par\vspace{0.2cm}}
+                    \usebeamerfont{institute}{\insertinstitute\par\vspace{0.1cm}}
+                    \usebeamerfont{date}{\insertdate\par}
+                \end{minipage}
+            }
+        \end{picture}
+}
+
+\mode
+<all>
+
+
+
+% Background image credits: Photo by Createria on Unsplash. Credit badge code
+% <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@createria?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Createria"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Createria</span></a>
