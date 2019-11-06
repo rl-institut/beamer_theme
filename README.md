@@ -1,6 +1,6 @@
 # How to use?
 
-## Building the exemple slides
+## Building the example slides
 
 Clone the Repository (aka. download the files) and run
 
