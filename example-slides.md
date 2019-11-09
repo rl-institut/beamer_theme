@@ -3,8 +3,8 @@ author:
 - Matthias Laugwitz\
 - Jann Launer\
 - Guido Pleßmann
-title: The new \LaTeX{} template
-subtitle: ...finally overcoming MS products
+title: The RLI \LaTeX{} beamer theme
+subtitle: ...finally overcoming MS Powerpoint
 titlepage-note: |
   This is a the note that goes on the title page. This talk is to be 
   given at Doing DH.
@@ -86,7 +86,7 @@ Frame with no title
 #. Source file (.tex oder .md) ist eine Textdatei
 #. Maschinenlesbar und mit git versionierbar
 #. Auf GitHub zu verwalten, weil kein BLOB
-#. Nutzen wir auch in Redmine
+#. Markdown nutzen wir auch in Redmine
 
 # Figures
 
