@@ -1,8 +1,9 @@
 ---
 author:
-- Matthias Laugwitz\
-- Jann Launer\
 - Guido Pleßmann
+short-author: 
+- Guido Pleßmann
+tel: "123"
 title: The RLI \LaTeX{} beamer theme
 subtitle: ...finally overcoming MS Powerpoint
 titlepage-note: |
@@ -12,6 +13,12 @@ institute: Reiner Lemoine Institut
 classoption: aspectratio=169
 date: \today
 theme: rli
+header-includes:
+- |
+  \newcommand{\tel}{+49 (0)30 1208 434 72}
+  \newcommand{\email}{guido.plessmann@rl-institut.de}
+  \newcommand{\twitter}{\href{https://twitter.com/gplssm}{@gplssm}}
+  \newcommand{\finalstatement}{Enjoy stating a final statement ;-)}
 ...
 
 # One-line title
@@ -117,11 +124,26 @@ to achieve the same, see
 
 Markdown block content
 
-# Final slide
+# Using the default last slide
 
-\textbf{Idee} 
-Die Slide wird per `# Final slide` (muss noch leer gemacht werden) und der wird über `\insertendpagecontent` (newcommand) einfügt
+## Latex
 
-# References
+``` latex
+\begin{frame}[plain]{}
 
+\insertendpagecontent
 
+\end{frame}
+```
+
+## Markdown
+
+``` markdown
+# {.plain}
+
+\insertendpagecontent
+```
+
+# {.plain}
+
+\insertendpagecontent
