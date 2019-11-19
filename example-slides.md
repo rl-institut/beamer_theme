@@ -1,8 +1,8 @@
 ---
 author:
-- Matthias Laugwitz\
-- Jann Launer\
 - Guido Pleßmann
+- Jann Launer
+- Matthias Laugwitz  
 title: The RLI \LaTeX{} beamer theme
 subtitle: ...finally overcoming MS Powerpoint
 titlepage-note: |
