@@ -9,12 +9,38 @@
 
   \draw (0,0) -- (0.79\paperwidth,0);
    \ifx\insertframesubtitle\@empty%
-      {\node[anchor=west,font=\large] at (0,0.61){\insertframetitle};}
+      {\node[anchor=west] at (0,0.61){\insertframetitle};}
       \else%
       {\node[anchor= west,font=\large] at (0,0.81){\insertframetitle};%
        \node[anchor= west,font=\small] at (0,0.41){\insertframesubtitle};}%
       \fi
   \end{tikzpicture}
+}
+
+\defbeamertemplate*{footline}{rli}[1][]
+{
+    \ifnum \insertpagenumber=1
+      \leavevmode%
+      \hbox{%
+      \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,center]{}%
+        % empty environment to raise height
+      \end{beamercolorbox}}%
+      \vskip0pt%
+    \else
+      \leavevmode%
+      % \hbox{%
+      \begin{beamercolorbox}[sep=1.35ex,wd=.334\paperwidth,ht=4.35ex,dp=0ex,left]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\hspace{3.8em}\insertdate
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[sep=1.35ex,wd=.334\paperwidth,ht=4.35ex,dp=0ex,center]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertinstitute
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[sep=1.35ex,wd=.334\paperwidth,ht=4.35ex,dp=0ex,right]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertpagenumber\hspace{3.8em}
+      \end{beamercolorbox}
+      % }%
+      \vskip0pt%
+    \fi
 }
 
 \mode<all>

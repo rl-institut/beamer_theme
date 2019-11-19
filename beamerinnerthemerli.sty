@@ -66,9 +66,9 @@
   \filldraw[draw=none,fill=rliblue] (brS) -- (brW) -- (brN) -- (brE) -- cycle;
   \filldraw[draw=white,fill=white] (w2tR) -- (bgS) -- ($ (bgS) + ({-2*\halfWidthBar},0) $) -- ($ (w2tR) + ({-2*\halfWidthBar},0) $) -- cycle;
   \filldraw[draw=white,fill=white] (picUpN) -- (w1tR) -- (paperTR) -- (bgN) -- (bgW) -- (picUpS) -- (picUpE) -- cycle;
-  \filldraw[draw=none,fill=rligray!15] (bgS) -- (bgW) -- (bgN) -- (paperBR) -- cycle;
+  \filldraw[draw=none,fill=rligraylight] (bgS) -- (bgW) -- (bgN) -- (paperBR) -- cycle;
   
-  \draw (1,0.67\paperheight) -- (0.5\textwidth,0.67\paperheight);
+  \draw (1,0.685\paperheight) -- (0.5\textwidth,0.685\paperheight);
   
 
   \ifnum\thepage>1\relax%
@@ -83,9 +83,9 @@
 \begin{picture}(0,0)
             \put(0,-110.7){%
                 \begin{minipage}[b][45mm][t]{.5\textwidth}
-                    \usebeamerfont{title}{\textbf{\inserttitle}\par}
+                    \usebeamerfont{title}{\bfseries{\inserttitle}\par}
                     \usebeamerfont{subtitle}{\insertsubtitle\par\vspace{0.5cm}}
-                    \usebeamerfont{author}{\insertauthor\par\vspace{0.2cm}}
+                    \usebeamerfont{author}{\insertauthor\par\vspace{0.5cm}}
                     \usebeamerfont{institute}{\insertinstitute\par\vspace{0.1cm}}
                     \usebeamerfont{date}{\insertdate\par}
                 \end{minipage}

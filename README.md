@@ -1,11 +1,20 @@
 # How to use?
 
+## Installation
+
+You need to have `texlive-xetex` installed.
+
+```
+texlive-xetex
+```
+
+
 ## Building the example slides
 
 Clone the Repository (aka. download the files) and run
 
 ```
-pandoc -t beamer -o example-slides.pdf example-slides.md 
+pandoc -t beamer --latex-engine=xelatex -o example-slides.pdf example-slides.md 
 ```
 
 ## Use the theme for your own slides

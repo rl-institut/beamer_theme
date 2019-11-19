@@ -1,9 +1,10 @@
 ---
 author:
+- Matthias Laugwitz\
+- Jann Launer\
 - Guido Pleßmann
 short-author: 
 - Guido Pleßmann
-tel: "123"
 title: The RLI \LaTeX{} beamer theme
 subtitle: ...finally overcoming MS Powerpoint
 titlepage-note: |
