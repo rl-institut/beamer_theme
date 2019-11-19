@@ -1,8 +1,8 @@
 ---
 author:
-- Matthias Laugwitz\
-- Jann Launer\
 - Guido Pleßmann
+- Jann Launer
+- Matthias Laugwitz
 short-author: 
 - Guido Pleßmann
 title: The RLI \LaTeX{} beamer theme
