@@ -14,7 +14,7 @@ date: \today
 theme: rli
 ...
 
-# One-line title
+# Add a frame with a title
 
 ~~~ latex
 \begin{frame} 
@@ -22,16 +22,10 @@ theme: rli
 \end{frame}
 ~~~
 
-# Title with subtitle
+# Use images
 
-\framesubtitle{Be more presice using a subtitle}
-
-~~~ latex
-\begin{frame} 
-\frametitle{Title with subtitle} 
-\framesubtitle{Be more presice using a subtitle}
-\end{frame}
-~~~
+\center
+![](img/createria-ZYu6P9-Glic-unsplash_resized.jpg){ width=75% }
 
 # Use lists and enumerated lists
 
