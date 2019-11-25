@@ -2,8 +2,12 @@
 
 % Requirement
 \RequirePackage{tikz}
+\RequirePackage{hyperref}
 \RequirePackage{fontspec}
 
+\hypersetup{
+	colorlinks=true,
+	urlcolor=red}
 
 % Settings
 \useinnertheme{rli}
@@ -12,6 +16,38 @@
 \usefonttheme{rli}
 
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{blocks}[rounded][shadow=true]  
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\newcommand{\insertendpagecontent}{%
+  \begin{tikzpicture}
+  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+
+  \ifx\finalstatement\@empty%
+      \else%
+      {\node[anchor=south west, draw=none,text width=\textwidth] at (0,7.2) {
+      \begin{center}
+      \textbf{\finalstatement}
+      \end{center}};}
+      \fi
+
+  \node[anchor=south west, draw=none] (picture) at (0,4) {\includegraphics[width=3cm]{img/CC-License-1.png}};
+  \node[anchor=south west, draw=none,text width=.55\textwidth] at (0,1.7) {\textbf{License}\par \small Except where otherwise noted, this work and its content (texts and illustrations) are licensed under the Attribution 4.0 International (CC BY 4.0).
+
+See license text for further information.};
+	
+	\node[anchor=south west, draw=none,text width=\textwidth] at (0,0.2) {\footnotesize Please cite as "\inserttitle{}: \insertsubtitle{}" \textcopyright{} \href{https://reiner-lemoine-institut.de/}{Reiner Lemoine Institut} | \href{https://creativecommons.org/licenses/by/4.0/}{{CC BY 4.0}}};
+
+  \node[anchor=south west,text width=.45\textwidth] (contact) at (0.58\textwidth,1.7) {
+  	\textbf{\insertauthor}\par
+  	\small
+  	Tel: \tel\par
+  	E-Mail: \email\par
+  	Web: \href{https://reiner-lemoine-institut.de}{www.reiner-lemoine-institut.de}\par
+  	Twitter: \twitter
+  	};
+	\node[above of=contact.north, anchor=south west, node distance=4mm] (picture) at (0.58\textwidth,4.1) {\includegraphics[width=1.3cm]{img/Speech_Bubble_290670_cropped.pdf}};
+
+  \end{tikzpicture}
+}
 
 \mode<all>

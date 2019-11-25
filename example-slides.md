@@ -2,7 +2,9 @@
 author:
 - Guido Pleßmann
 - Jann Launer
-- Matthias Laugwitz  
+- Matthias Laugwitz
+short-author: 
+- Guido Pleßmann
 title: The RLI \LaTeX{} beamer theme
 subtitle: ...finally overcoming MS Powerpoint
 titlepage-note: |
@@ -12,6 +14,12 @@ institute: Reiner Lemoine Institut
 classoption: aspectratio=169
 date: \today
 theme: rli
+header-includes:
+- |
+  \newcommand{\tel}{+49 (0)30 1208 434 72}
+  \newcommand{\email}{guido.plessmann@rl-institut.de}
+  \newcommand{\twitter}{\href{https://twitter.com/gplssm}{@gplssm}}
+  \newcommand{\finalstatement}{Enjoy stating a final statement ;-)}
 ...
 
 # Add a frame with a title
@@ -111,4 +119,26 @@ to achieve the same, see
 
 Markdown block content
 
-# References
+# Using the default last slide
+
+## Latex
+
+``` latex
+\begin{frame}[plain]{}
+
+\insertendpagecontent
+
+\end{frame}
+```
+
+## Markdown
+
+``` markdown
+# {.plain}
+
+\insertendpagecontent
+```
+
+# {.plain}
+
+\insertendpagecontent
