@@ -7,9 +7,6 @@ short-author:
 - Guido Pleßmann
 title: The RLI \LaTeX{} beamer theme
 subtitle: ...finally overcoming MS Powerpoint
-titlepage-note: |
-  This is a the note that goes on the title page. This talk is to be 
-  given at Doing DH.
 institute: Reiner Lemoine Institut
 classoption: aspectratio=169
 date: \today
@@ -20,7 +17,7 @@ header-includes:
   \newcommand{\email}{guido.plessmann@rl-institut.de}
   \newcommand{\twitter}{\href{https://twitter.com/gplssm}{@gplssm}}
   \newcommand{\finalstatement}{Enjoy stating a final statement ;-)}
-...
+---
 
 # Add a frame with a title
 
