@@ -31,3 +31,5 @@ Make sure you have following two lines in the preamble
 and then: happy building your slides :tada:.
 
 See the example slides for some hints on how to create slides with latex beamer.
+
+For colored links, use `\hypersetup{colorlinks,urlcolor=rlilinkcolor}` in your preamble.

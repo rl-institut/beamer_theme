@@ -20,6 +20,7 @@ header-includes:
   \newcommand{\email}{guido.plessmann@rl-institut.de}
   \newcommand{\twitter}{\href{https://twitter.com/gplssm}{@gplssm}}
   \newcommand{\finalstatement}{Enjoy stating a final statement ;-)}
+  \hypersetup{colorlinks,urlcolor=rlilinkcolor}
 ...
 
 # Add a frame with a title
