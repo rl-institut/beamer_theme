@@ -14,6 +14,7 @@ institute: Reiner Lemoine Institut
 classoption: aspectratio=169
 date: \today
 theme: rli
+urlcolor: rlilinkcolor
 header-includes:
 - |
   \newcommand{\tel}{+49 (0)30 1208 434 72}
