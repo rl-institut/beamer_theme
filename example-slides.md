@@ -58,7 +58,7 @@ With content in it's body.
 
 Content stolen from [ACEEE glosarry](https://aceee.org/glossary_data).
 
-# Table
+# Presenting code
 
 ~~~ python
 import requests
@@ -92,8 +92,6 @@ print(tabulate(df.head(10), tablefmt="pipe", headers="keys"))
 |  7 | Schleswig-Holstein  | Wind Land    |          2000 | Schleswig-Holstein Netz AG          |
 |  8 | Hessen              | Biomasse     |           400 | EnergieNetz Mitte GmbH              |
 |  9 | Bayern              | Biomasse     |          1000 | MDN Main-Donau Netzgesellschaft mbH |
-
-
 
 # Blocks
 
@@ -142,7 +140,6 @@ Requires the following \LaTeX{} code in `- header-includes`
 
 ~~~ latex
 ---
-...
 header-includes:
 - |
   \newcommand{\tel}{+49 (0)30 1208 434 72}
@@ -151,6 +148,10 @@ header-includes:
   \newcommand{\finalstatement}{Enjoy stating a final statement ;-)}
 ---
 ~~~
+
+# Find help
+
+- Pandoc manual: [https://pandoc.org/MANUAL.html](https://pandoc.org/MANUAL.html)
 
 
 # {.plain}
