@@ -5,10 +5,6 @@
 \RequirePackage{hyperref}
 \RequirePackage{fontspec}
 
-\hypersetup{
-	colorlinks=true,
-	urlcolor=red}
-
 % Settings
 \useinnertheme{rli}
 \useoutertheme{rli}
@@ -35,7 +31,7 @@
 
 See license text for further information.};
 	
-	\node[anchor=south west, draw=none,text width=\textwidth] at (0,0.2) {\footnotesize Please cite as "\inserttitle{}: \insertsubtitle{}" \textcopyright{} \href{https://reiner-lemoine-institut.de/}{Reiner Lemoine Institut} | \href{https://creativecommons.org/licenses/by/4.0/}{{CC BY 4.0}}};
+	\node[anchor=south west, draw=none,text width=\textwidth, execute at begin node=\setlength{\baselineskip}{1ex}] at (0,0.2) {\scriptsize Please cite as "\inserttitle: \insertsubtitle" \textcopyright{} \href{https://reiner-lemoine-institut.de/}{Reiner Lemoine Institut} | \href{https://creativecommons.org/licenses/by/4.0/}{{CC BY 4.0}}};
 
   \node[anchor=south west,text width=.45\textwidth] (contact) at (0.58\textwidth,1.7) {
   	\textbf{\insertauthor}\par
