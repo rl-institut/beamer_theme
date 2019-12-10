@@ -8,6 +8,8 @@ You need to have `texlive-xetex` installed.
 texlive-xetex
 ```
 
+When using pandoc, it's recommended to use a version >2.0. Ubuntu/debian user should know that pandoc from official sources might be outdated. Consider to install a [newer version](https://pandoc.org/installing.html).
+
 
 ## Building the example slides
 
