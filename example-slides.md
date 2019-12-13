@@ -137,9 +137,29 @@ Block content
 
 # Aligning images
 
-# GIFs
+\begin{figure}
+\begin{minipage}{0.3\textwidth}
+\centering
+\includegraphics[height=2.5cm]{example-image-a}%
+\end{minipage}%
+\begin{minipage}{0.3\textwidth}
+\centering
+\includegraphics[height=2.5 cm]{example-image-b}%
+\end{minipage}%
+\begin{minipage}{0.3\textwidth}
+\centering
+\includegraphics[height=2.5 cm]{example-image-c}%
+\end{minipage}%
 
-A cat gif
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[height=2.5 cm]{example-image-a}%
+\end{minipage}%
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[height=2.5 cm]{example-image-b}%
+\end{minipage}%
+\end{figure}
 
 ---
 
