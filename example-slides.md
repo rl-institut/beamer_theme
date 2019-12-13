@@ -3,8 +3,6 @@ author:
 - Guido Pleßmann
 - Jann Launer
 - Matthias Laugwitz
-short-author: 
-- Guido Pleßmann
 title: The RLI \LaTeX{} beamer theme
 subtitle: ...finally overcoming MS Powerpoint
 institute: Reiner Lemoine Institut
@@ -30,10 +28,17 @@ Create a new frame with title and content
 With content in it's body.
 ~~~
 
-# Use images
 
-\center
-![](img/createria-ZYu6P9-Glic-unsplash_resized.jpg){ width=75% }
+# Use formatting syntax
+
+The _quick_ **brown** fox ^jumps^ ~over~ the `lazy` ``dog``~~, not the cat~~.
+
+You can also quote it
+
+> The quick brown fox jumps over the lazy dog, not the cat.
+
+Moreover, you can simply write \LaTeX{} code in .md files.
+
 
 # Use lists and enumerated lists
 
@@ -51,13 +56,21 @@ With content in it's body.
 
 # Descriptions
 
-\begin{description}[A]
-  \item[Distributed Energy Resource] Electrical power generation or storage located at or near the point of use, as well as demand side measures.
-  \item[Distributed Generation] Electric power generation located at or near the point of use.
-  \item[Distributed Power] Electrical power generation or storage located at or near the point of use.
-\end{description}
+Distributed Energy Resource
+ : Electrical power generation or storage located at or near the point of use, as well as demand side measures.
 
-Content stolen from [ACEEE glosarry](https://aceee.org/glossary_data).
+Distributed Generation
+ : Electric power generation located at or near the point of use.
+
+Distributed Power
+ : Electrical power generation or storage located at or near the point of use.
+
+\footnotesize Content stolen from [ACEEE glosarry](https://aceee.org/glossary_data).
+
+# Insert images
+
+\center
+![](img/createria-ZYu6P9-Glic-unsplash_resized.jpg){ width=75% }
 
 # Presenting code
 
@@ -96,45 +109,77 @@ print(tabulate(df.head(10), tablefmt="pipe", headers="keys"))
 
 # Blocks
 
-\begin{block}{Title}
-Here you can put your content
-\end{block}
+## Block header
 
-in Markdown you simply use
+Block content
 
-``` markdown
-## Markdown block header
+# Use columns to organize your content
 
-Markdown block content
-```
+:::::: {.columns}
+::: {.column  width=55%}
+\includegraphics[width=\textwidth]{example-image-a}
+:::
 
-to achieve the same, see
+::: {.column  width=45%}
+>- Explain
+>- what's
+>- to
+>- see
+:::
+::::::
 
-## Markdown block header
+# Aligning images
 
-Markdown block content
+# GIFs
+
+A cat gif
+
+---
+
+Frame with no title
+
+# {.plain }
+
+...or a plain one, even without footer.
 
 
 
-# Using the default last slide
+\tikzstyle{icon} = [inner sep=0pt];
+\tikzstyle{flow} = [ultra thick, inner sep=0pt];
 
-## Latex
+# How to use the theme
 
-``` latex
-\begin{frame}[plain]{}
+- You need the `.sty` files and the `img/` folder right next to your `slides.md` file
+- Recommended workflow
+  - Have the clone of [https://github.com/rl-institut/beamer_theme/](https://github.com/rl-institut/beamer_theme/)
+    
+    ~~~ bash
+    git clone git@github.com:rl-institut/beamer_theme.git
+    ~~~
+  - Keep it up-to-date
+  - Copy required files to your slides path
 
-\insertendpagecontent
+    ~~~ bash
+    cp -r beamer_theme/img/ beamer_theme/*.sty <path-of-slide.md> 
+    ~~~
 
-\end{frame}
-```
 
-## Markdown
+# Command to build these slides
 
-``` markdown
-# {.plain}
+~~~ bash
+ pandoc -t beamer--pdf-engine=xelatex -o example-slides.pdf example-slides.md
+~~~
 
-\insertendpagecontent
-```
+with frontmatter
+
+~~~ yaml
+---
+- title: <Title>
+- ...
+- theme: rli
+---
+~~~
+
 # Information must be provided in markdown header
 
 Requires the following \LaTeX{} code in `- header-includes`
@@ -153,7 +198,18 @@ header-includes:
 # Find help
 
 - Pandoc manual: [https://pandoc.org/MANUAL.html](https://pandoc.org/MANUAL.html)
+- Useful overview of commands for formatting with Markdown and pandoc: [http://www.flutterbys.com.au/stats/tut/tut17.3.html](http://www.flutterbys.com.au/stats/tut/tut17.3.html)
+- Theme repository: [https://github.com/rl-institut/beamer_theme](https://github.com/rl-institut/beamer_theme)
+- Demo slides (compiled example slides.md): ...
 
+# Using the default last slide
+
+
+``` markdown
+# {.plain}
+
+\insertendpagecontent
+```
 
 # {.plain}
 
