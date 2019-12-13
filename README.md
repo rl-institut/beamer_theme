@@ -10,6 +10,12 @@ texlive-xetex
 
 When using pandoc, it's recommended to use a version >2.0. Ubuntu/debian user should know that pandoc from official sources might be outdated. Consider to install a [newer version](https://pandoc.org/installing.html).
 
+For using citations with pandoc pandoc-citeproc is required
+
+```
+sudo apt install pandoc-citeproc
+```
+
 
 ## Building the example slides
 
@@ -17,6 +23,12 @@ Clone the Repository (aka. download the files) and run
 
 ```
 pandoc -t beamer --latex-engine=xelatex -o example-slides.pdf example-slides.md 
+```
+
+To enable processing of citations use
+
+```
+pandoc -t beamer --filter pandoc-citeproc --bibliography bib/example.bib --pdf-engine=xelatex -o example-slides.pdf example-slides.md
 ```
 
 ## Use the theme for your own slides

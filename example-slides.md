@@ -114,6 +114,20 @@ print(tabulate(df.head(10), tablefmt="pipe", headers="keys"))
 |  8 | Hessen              | Biomasse     |           400 | EnergieNetz Mitte GmbH              |
 |  9 | Bayern              | Biomasse     |          1000 | MDN Main-Donau Netzgesellschaft mbH |
 
+# Math
+
+[SinkDSM](https://oemof.readthedocs.io/en/stable/oemof_solph.html#oemof-solph-custom-sinkdsm-label) following "On the representation of demand-side management in power system models" @ZERRAHN2015840
+\vspace{-1ex}
+\begin{align}
+\onslide<1->{\quad \dot{E}_{t} = demand_{t} + DSM_{t}^{up} - \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do}  \quad \forall t \in \mathbb{T}\\}
+\onslide<2->{\quad DSM_{t}^{up} = \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do} \quad \forall t \in \mathbb{T}\\}
+\onslide<3->{\quad DSM_{t}^{up} \leq  E_{t}^{up} \quad \forall t \in \mathbb{T}\\}
+\onslide<4->{\quad \sum_{t=tt-L}^{tt+L} DSM_{t,tt}^{do}  \leq E_{tt}^{do} \quad \forall tt \in \mathbb{T}\\}
+\onslide<5>{\quad DSM_{t}^{up}  + \sum_{t=tt-L}^{tt+L} DSM_{t,tt}^{do} \leq max \{ E_{tt}^{up}, E_{tt}^{do} \}\quad \forall tt \in \mathbb{T}\\}
+\notag
+\end{align}
+
+
 # Blocks
 
 ## Block header
@@ -161,13 +175,6 @@ Block content
 \end{minipage}%
 \end{figure}
 
----
-
-Frame with no title
-
-# {.plain }
-
-...or a plain one, even without footer.
 
 # Drawing with Tikz: animated energy system block diagram
 
@@ -211,6 +218,15 @@ Frame with no title
 
 :::
 ::::::
+
+
+---
+
+Frame with no title
+
+# {.plain }
+
+...or a plain one, even without footer.
 
 
 # How to use the theme
@@ -280,3 +296,5 @@ header-includes:
 # {.plain}
 
 \insertendpagecontent
+
+# References
