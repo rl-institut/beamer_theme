@@ -16,6 +16,13 @@ header-includes:
   \newcommand{\email}{guido.plessmann@rl-institut.de}
   \newcommand{\twitter}{\href{https://twitter.com/gplssm}{@gplssm}}
   \newcommand{\finalstatement}{Enjoy stating a final statement ;-)}
+  \tikzset{
+  invisible/.style={opacity=0},
+  visible on/.style={alt={#1{}{invisible}}},
+  alt/.code args={<#1>#2#3}{%
+    \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+  },
+  }
 ---
 
 # A new frame
@@ -142,10 +149,49 @@ Frame with no title
 
 ...or a plain one, even without footer.
 
+# Drawing with Tikz: animated energy system block diagram
 
+:::::: {.columns}
+::: {.column  width=45%} 
+\begin{tikzpicture}
 
 \tikzstyle{icon} = [inner sep=0pt];
 \tikzstyle{flow} = [ultra thick, inner sep=0pt];
+
+\coordinate (busTop) at (0.5\paperwidth,0.8\paperheight);
+\coordinate (busBottom) at (0.5\paperwidth,0.3\paperheight);
+
+\node (elecbus) at ($(busBottom) - (0,.5)$) {Household busbar};
+\draw[line width=4pt](busTop) -- (busBottom);
+
+
+\node[icon,draw,very thick, rounded corners=0.5ex, inner sep=3pt,visible on=<5->](dsm) at ($(busTop)!0.5!(busBottom) - (1,0)$) {{\visible<5->{\includegraphics[width=.8cm]{img/noun_filter_1653638.pdf}}}};
+\node[icon](demand) at ($(busTop)!0.5!(busBottom) - (2.5,0)$) {{\visible<2->{\includegraphics[width=1.1cm]{img/Verbraucher_Haushalt_Strom.pdf}}}};
+\node[icon](grid) at ($(busTop)!0.7!(busBottom) + (1,0)$) {{\visible<4->{\includegraphics[width=1.1cm]{img/Transport_Strom.pdf}}}};
+\node[icon](pv) at ($(busTop)!0.3!(busBottom) + (1,0)$) {{\visible<3->{\includegraphics[width=1.1cm]{img/Stromerzeuger_Photovoltaik_Dachanlage.pdf}}}};
+
+\draw[<-,flow, visible on=<5->](dsm) -- ($(busTop)!0.5!(busBottom)$);
+\draw[->,flow, visible on=<5->](dsm) -- (demand);
+\draw[<-,flow, visible on=<4->] ($(busTop)!0.7!(busBottom) + (2pt,0)$) -- (grid);
+\draw[<-,flow, visible on=<3->] ($(busTop)!0.3!(busBottom) + (2pt,0)$) -- (pv);
+
+
+\end{tikzpicture}
+:::
+
+::: {.column  width=40%}
+**Assuming we have a household including**
+
+\begin{itemize}
+\item<2-> Demand
+\item<3-> PV
+\item<4-> Grid connection
+\item<5-> Demand-side management unit
+\end{itemize}
+
+:::
+::::::
+
 
 # How to use the theme
 
