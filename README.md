@@ -1,4 +1,8 @@
-# How to use?
+The RLI Latex beamer theme. 
+
+![](img/example_slides.gif)
+
+# How to use
 
 ## Installation
 

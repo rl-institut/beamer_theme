@@ -282,7 +282,6 @@ header-includes:
 - Pandoc manual: [https://pandoc.org/MANUAL.html](https://pandoc.org/MANUAL.html)
 - Useful overview of commands for formatting with Markdown and pandoc: [http://www.flutterbys.com.au/stats/tut/tut17.3.html](http://www.flutterbys.com.au/stats/tut/tut17.3.html)
 - Theme repository: [https://github.com/rl-institut/beamer_theme](https://github.com/rl-institut/beamer_theme)
-- Demo slides (compiled example slides.md): ...
 
 # Using the default last slide
 
