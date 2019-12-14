@@ -1,8 +1,6 @@
 ---
 author:
 - Guido Pleßmann
-- Jann Launer
-- Matthias Laugwitz
 title: The RLI \LaTeX{} beamer theme
 subtitle: ...finally overcoming MS Powerpoint
 institute: Reiner Lemoine Institut
@@ -23,6 +21,7 @@ header-includes:
     \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
   },
   }
+  \usepackage{blindtext}
 ---
 
 # A new frame
@@ -32,7 +31,7 @@ Create a new frame with title and content
 ~~~ markdown
 # A new frame
 
-With content in it's body.
+With content in its body.
 ~~~
 
 
@@ -63,16 +62,8 @@ Moreover, you can simply write \LaTeX{} code in .md files.
 
 # Descriptions
 
-Distributed Energy Resource
- : Electrical power generation or storage located at or near the point of use, as well as demand side measures.
+\blinddescription[3]
 
-Distributed Generation
- : Electric power generation located at or near the point of use.
-
-Distributed Power
- : Electrical power generation or storage located at or near the point of use.
-
-\footnotesize Content stolen from [ACEEE glosarry](https://aceee.org/glossary_data).
 
 # Insert images
 

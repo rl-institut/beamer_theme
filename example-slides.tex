@@ -1,7 +1,5 @@
 \documentclass[ignorenonframetext,aspectratio=169]{beamer}
 
-\usetheme[]{rli}
-
 \usepackage[normalem]{ulem}
 \usepackage{listings}
 \lstloadlanguages{Python}
@@ -24,6 +22,9 @@
 \usepackage{longtable,booktabs}
 \usepackage{natbib}
 
+\usepackage{blindtext}
+
+\usetheme[]{rli}
 
 \tikzset{
 invisible/.style={opacity=0},
@@ -42,7 +43,7 @@ alt/.code args={<#1>#2#3}{%
 
 \title{The RLI \LaTeX{} beamer theme}
 \subtitle{\ldots finally overcoming MS Powerpoint}
-\author{Guido Pleßmann \and Jann Launer \and Matthias Laugwitz}
+\author{Guido Pleßmann}
 \date{\today}
 \institute{Reiner Lemoine Institut}
 
@@ -107,6 +108,8 @@ Moreover, you can simply write \LaTeX{} code in .md files.
 \end{frame}
 
 \begin{frame}{Descriptions}
+
+\blinddescription
 
 \begin{description}
 \item[Distributed Energy Resource]
