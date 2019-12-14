@@ -97,3 +97,8 @@ To enable processing of citations use
 pandoc -t beamer --filter pandoc-citeproc --bibliography bib/example.bib --pdf-engine=xelatex -o example-slides.pdf example-slides.md
 ```
 Have a look into `example_slides.md` for details.
+
+# Contributing
+
+Contributions are welcome! Read [CONTRIBUTING](https://github.com/rl-institut/beamer_theme/blob/master/CONTRIBUTING.md) for developing workflow.
+If you don't know how to help, see issue for upnext release.
