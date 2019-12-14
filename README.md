@@ -25,6 +25,7 @@ sudo apt install pandoc-citeproc
 
 Clone the Repository (aka. download the files) and run
 
+
 ```
 pandoc -t beamer --latex-engine=xelatex -o example-slides.pdf example-slides.md 
 ```
@@ -33,6 +34,22 @@ To enable processing of citations use
 
 ```
 pandoc -t beamer --filter pandoc-citeproc --bibliography bib/example.bib --pdf-engine=xelatex -o example-slides.pdf example-slides.md
+```
+### LaTeX
+
+Build example slides from `.tex` file 
+
+```
+xelatex example-slides.tex
+```
+
+If [bibtex]() citations are used, run the following commands for correctly processing newly added citations
+
+```
+xelatex example-slides.tex
+bibtex example-slides.aux
+xelatex example-slides.tex
+xelatex example-slides.tex
 ```
 
 ## Use the theme for your own slides
