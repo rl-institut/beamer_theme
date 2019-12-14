@@ -43,7 +43,7 @@ Build example slides from `.tex` file
 xelatex example-slides.tex
 ```
 
-If [bibtex]() citations are used, run the following commands for correctly processing newly added citations
+If [bibtex](https://de.wikipedia.org/wiki/BibTeX) citations are used, run the following commands for correctly processing newly added citations
 
 ```
 xelatex example-slides.tex
