@@ -101,4 +101,4 @@ Have a look into `example_slides.md` for details.
 # Contributing
 
 Contributions are welcome! Read [CONTRIBUTING](https://github.com/rl-institut/beamer_theme/blob/master/CONTRIBUTING.md) for developing workflow.
-If you don't know how to help, see issue for upnext release.
+If you don't know how to help, see issue for upcoming release.
