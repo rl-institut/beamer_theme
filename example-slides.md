@@ -3,13 +3,8 @@ author:
 - Guido Pleßmann
 - Jann Launer
 - Matthias Laugwitz
-short-author: 
-- Guido Pleßmann
 title: The RLI \LaTeX{} beamer theme
 subtitle: ...finally overcoming MS Powerpoint
-titlepage-note: |
-  This is a the note that goes on the title page. This talk is to be 
-  given at Doing DH.
 institute: Reiner Lemoine Institut
 classoption: aspectratio=169
 date: \today
@@ -21,51 +16,240 @@ header-includes:
   \newcommand{\email}{guido.plessmann@rl-institut.de}
   \newcommand{\twitter}{\href{https://twitter.com/gplssm}{@gplssm}}
   \newcommand{\finalstatement}{Enjoy stating a final statement ;-)}
-...
+  \tikzset{
+  invisible/.style={opacity=0},
+  visible on/.style={alt={#1{}{invisible}}},
+  alt/.code args={<#1>#2#3}{%
+    \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+  },
+  }
+---
 
-# Add a frame with a title
+# A new frame
 
-~~~ latex
-\begin{frame} 
-\frametitle{One-line title} 
-\end{frame}
+Create a new frame with title and content
+
+~~~ markdown
+# A new frame
+
+With content in it's body.
 ~~~
 
-# Use images
 
-\center
-![](img/createria-ZYu6P9-Glic-unsplash_resized.jpg){ width=75% }
+# Use formatting syntax
+
+The _quick_ **brown** fox ^jumps^ ~over~ the `lazy` ``dog``~~, not the cat~~.
+
+You can also quote it
+
+> The quick brown fox jumps over the lazy dog, not the cat.
+
+Moreover, you can simply write \LaTeX{} code in .md files.
+
 
 # Use lists and enumerated lists
 
 - item a
-- item c
-- item b
-	#. item 1
-	#. item 2
-	#. item 3
+  - item a.1
+    - item a.1.a
+    - item a.1.b
+	
+#. item 1
+   #. item a
+#. item 2
+#. item 3
+   - mix
+   - it
 
 # Descriptions
 
-\begin{description}[A]
-  \item[A] A?
-  \item[B] B?
-  \item[C] C?
-\end{description}
+Distributed Energy Resource
+ : Electrical power generation or storage located at or near the point of use, as well as demand side measures.
 
-# Forget about \LaTeX{} , use pandoc!
+Distributed Generation
+ : Electric power generation located at or near the point of use.
 
-## Pandoc
+Distributed Power
+ : Electrical power generation or storage located at or near the point of use.
 
-Multi text-format converter with CLI
+\footnotesize Content stolen from [ACEEE glosarry](https://aceee.org/glossary_data).
 
-* .tex <-> .md <-> html <-> pdf <-> ePub <-> .docx <-> ... 
+# Insert images
+
+\center
+![](img/createria-ZYu6P9-Glic-unsplash_resized.jpg){ width=75% }
+
+# Presenting code
+
+~~~ python
+import requests
+import pandas as pd
+from tabulate import tabulate
+
+df = pd.DataFrame(requests.get('http://openenergy-platform.org/api/v0\
+  /schema/supply/tables/bnetza_eeg_anlagenstammdaten/rows/?limit=100').json())
+
+df = df[[
+  '4.11_bundesland',
+  '4.1_energieträger', 
+  '4.2_installierte_leistung',
+  '4.16_name_des_netzbetreibers']]
+df.columns = ["Federal state", "Technology", "Inst. Power", "Grid operator"]
+
+print(tabulate(df.head(10), tablefmt="pipe", headers="keys"))
+~~~
+
+# Tables
+
+|    | Federal state       | Technology   |   Inst. Power | Grid operator                       |
+|---:|:--------------------|:-------------|--------------:|:------------------------------------|
+|  0 | Niedersachsen       | Biomasse     |           366 | Avacon AG                           |
+|  1 | Bayern              | Biomasse     |           380 | Bayernwerk AG                       |
+|  2 | Bayern              | Wasserkraft  |             6 | Bayernwerk AG                       |
+|  3 | Hessen              | Biomasse     |           380 | EnergieNetz Mitte GmbH              |
+|  4 | Bayern              | Wind Land    |          3050 | Bayernwerk AG                       |
+|  5 | Nordrhein-Westfalen | Biomasse     |           400 | Westfalen Weser Netz GmbH           |
+|  6 | Nordrhein-Westfalen | Biomasse     |          1200 | Westfalen Weser Netz GmbH           |
+|  7 | Schleswig-Holstein  | Wind Land    |          2000 | Schleswig-Holstein Netz AG          |
+|  8 | Hessen              | Biomasse     |           400 | EnergieNetz Mitte GmbH              |
+|  9 | Bayern              | Biomasse     |          1000 | MDN Main-Donau Netzgesellschaft mbH |
+
+# Math
+
+[SinkDSM](https://oemof.readthedocs.io/en/stable/oemof_solph.html#oemof-solph-custom-sinkdsm-label) following "On the representation of demand-side management in power system models" @ZERRAHN2015840
+\vspace{-1ex}
+\begin{align}
+\onslide<1->{\quad \dot{E}_{t} = demand_{t} + DSM_{t}^{up} - \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do}  \quad \forall t \in \mathbb{T}\\}
+\onslide<2->{\quad DSM_{t}^{up} = \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do} \quad \forall t \in \mathbb{T}\\}
+\onslide<3->{\quad DSM_{t}^{up} \leq  E_{t}^{up} \quad \forall t \in \mathbb{T}\\}
+\onslide<4->{\quad \sum_{t=tt-L}^{tt+L} DSM_{t,tt}^{do}  \leq E_{tt}^{do} \quad \forall tt \in \mathbb{T}\\}
+\onslide<5>{\quad DSM_{t}^{up}  + \sum_{t=tt-L}^{tt+L} DSM_{t,tt}^{do} \leq max \{ E_{tt}^{up}, E_{tt}^{do} \}\quad \forall tt \in \mathbb{T}\\}
+\notag
+\end{align}
 
 
-## Command to build these slides
+# Blocks
+
+## Block header
+
+Block content
+
+# Use columns to organize your content
+
+:::::: {.columns}
+::: {.column  width=55%}
+\includegraphics[width=\textwidth]{example-image-a}
+:::
+
+::: {.column  width=45%}
+>- Explain
+>- what's
+>- to
+>- see
+:::
+::::::
+
+# Aligning images
+
+\begin{figure}
+\begin{minipage}{0.3\textwidth}
+\centering
+\includegraphics[height=2.5cm]{example-image-a}%
+\end{minipage}%
+\begin{minipage}{0.3\textwidth}
+\centering
+\includegraphics[height=2.5 cm]{example-image-b}%
+\end{minipage}%
+\begin{minipage}{0.3\textwidth}
+\centering
+\includegraphics[height=2.5 cm]{example-image-c}%
+\end{minipage}%
+
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[height=2.5 cm]{example-image-a}%
+\end{minipage}%
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[height=2.5 cm]{example-image-b}%
+\end{minipage}%
+\end{figure}
+
+
+# Drawing with Tikz: animated energy system block diagram
+
+:::::: {.columns}
+::: {.column  width=45%} 
+\begin{tikzpicture}
+
+\tikzstyle{icon} = [inner sep=0pt];
+\tikzstyle{flow} = [ultra thick, inner sep=0pt];
+
+\coordinate (busTop) at (0.5\paperwidth,0.8\paperheight);
+\coordinate (busBottom) at (0.5\paperwidth,0.3\paperheight);
+
+\node (elecbus) at ($(busBottom) - (0,.5)$) {Household busbar};
+\draw[line width=4pt](busTop) -- (busBottom);
+
+
+\node[icon,draw,very thick, rounded corners=0.5ex, inner sep=3pt,visible on=<5->](dsm) at ($(busTop)!0.5!(busBottom) - (1,0)$) {{\visible<5->{\includegraphics[width=.8cm]{img/noun_filter_1653638.pdf}}}};
+\node[icon](demand) at ($(busTop)!0.5!(busBottom) - (2.5,0)$) {{\visible<2->{\includegraphics[width=1.1cm]{img/Verbraucher_Haushalt_Strom.pdf}}}};
+\node[icon](grid) at ($(busTop)!0.7!(busBottom) + (1,0)$) {{\visible<4->{\includegraphics[width=1.1cm]{img/Transport_Strom.pdf}}}};
+\node[icon](pv) at ($(busTop)!0.3!(busBottom) + (1,0)$) {{\visible<3->{\includegraphics[width=1.1cm]{img/Stromerzeuger_Photovoltaik_Dachanlage.pdf}}}};
+
+\draw[<-,flow, visible on=<5->](dsm) -- ($(busTop)!0.5!(busBottom)$);
+\draw[->,flow, visible on=<5->](dsm) -- (demand);
+\draw[<-,flow, visible on=<4->] ($(busTop)!0.7!(busBottom) + (2pt,0)$) -- (grid);
+\draw[<-,flow, visible on=<3->] ($(busTop)!0.3!(busBottom) + (2pt,0)$) -- (pv);
+
+
+\end{tikzpicture}
+:::
+
+::: {.column  width=40%}
+**Assuming we have a household including**
+
+\begin{itemize}
+\item<2-> Demand
+\item<3-> PV
+\item<4-> Grid connection
+\item<5-> Demand-side management unit
+\end{itemize}
+
+:::
+::::::
+
+
+---
+
+Frame with no title
+
+# {.plain }
+
+...or a plain one, even without footer.
+
+
+# How to use the theme
+
+- You need the `.sty` files and the `img/` folder right next to your `slides.md` file
+- Recommended workflow
+  - Have the clone of [https://github.com/rl-institut/beamer_theme/](https://github.com/rl-institut/beamer_theme/)
+    
+    ~~~ bash
+    git clone git@github.com:rl-institut/beamer_theme.git
+    ~~~
+  - Keep it up-to-date
+  - Copy required files to your slides path
+
+    ~~~ bash
+    cp -r beamer_theme/img/ beamer_theme/*.sty <path-of-slide.md> 
+    ~~~
+
+
+# Command to build these slides
 
 ~~~ bash
- pandoc -t beamer -o example-slides.pdf example-slides.md
+ pandoc -t beamer--pdf-engine=xelatex -o example-slides.pdf example-slides.md
 ~~~
 
 with frontmatter
@@ -78,61 +262,29 @@ with frontmatter
 ---
 ~~~
 
+# Information must be provided in markdown header
+
+Requires the following \LaTeX{} code in `- header-includes`
+
+~~~ latex
 ---
+header-includes:
+- |
+  \newcommand{\tel}{+49 (0)30 1208 434 72}
+  \newcommand{\email}{guido.plessmann@rl-institut.de}
+  \newcommand{\twitter}{\href{https://twitter.com/gplssm}{@gplssm}}
+  \newcommand{\finalstatement}{Enjoy stating a final statement ;-)}
+---
+~~~
 
-Frame with no title
+# Find help
 
-# Warum ist ein \LaTeX{} template gut?
-
-#. Layout und Inhalt sind getrennt!
-#. Gute Defaults
-#. Source file (.tex oder .md) ist eine Textdatei
-#. Maschinenlesbar und mit git versionierbar
-#. Auf GitHub zu verwalten, weil kein BLOB
-#. Markdown nutzen wir auch in Redmine
-
-# Figures
-
-# Tables
-
-* Simple table
-* More complex
-* Maybe an advanced table
-* It's easy to convert structured data into Markdown table syntax: on the example of JSON
-
-# Blocks
-
-\begin{block}{Title}
-Here you can put your content
-\end{block}
-
-in Markdown you simply use
-
-``` markdown
-## Markdown block header
-
-Markdown block content
-```
-
-to achieve the same, see
-
-## Markdown block header
-
-Markdown block content
+- Pandoc manual: [https://pandoc.org/MANUAL.html](https://pandoc.org/MANUAL.html)
+- Useful overview of commands for formatting with Markdown and pandoc: [http://www.flutterbys.com.au/stats/tut/tut17.3.html](http://www.flutterbys.com.au/stats/tut/tut17.3.html)
+- Theme repository: [https://github.com/rl-institut/beamer_theme](https://github.com/rl-institut/beamer_theme)
 
 # Using the default last slide
 
-## Latex
-
-``` latex
-\begin{frame}[plain]{}
-
-\insertendpagecontent
-
-\end{frame}
-```
-
-## Markdown
 
 ``` markdown
 # {.plain}
@@ -143,3 +295,5 @@ Markdown block content
 # {.plain}
 
 \insertendpagecontent
+
+# References
