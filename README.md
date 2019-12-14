@@ -4,7 +4,7 @@ The RLI corporate identidy implemented as a theme for Latex document class [beam
 
 # Installation
 
-You need to have some Latex packages installed. For linux users use
+You need to have some Latex packages installed. Linux users use
 
 ```
 sudo apt get install texlive
@@ -63,7 +63,7 @@ xelatex example-slides.tex
 
 and then: happy building your own slides :tada:.
 
-See the example slides for some hints on how to create slides with latex beamer.
+See the `example_slides.tex` for some hints on how to create slides with latex beamer.
 
 If [bibtex](https://de.wikipedia.org/wiki/BibTeX) citations are used, run the following commands for correctly processing newly added citations
 
@@ -96,5 +96,4 @@ To enable processing of citations use
 ```
 pandoc -t beamer --filter pandoc-citeproc --bibliography bib/example.bib --pdf-engine=xelatex -o example-slides.pdf example-slides.md
 ```
-
-## Use the theme for your own slides
+Have a look into `example_slides.md` for details.
