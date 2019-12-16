@@ -1,4 +1,4 @@
-The RLI corporate identidy implemented as a theme for Latex document class [beamer](https://en.wikibooks.org/wiki/LaTeX/Presentations). Usable with both, LaTeX and Markdown through [pandoc](https://pandoc.org/). Here are some example slides  
+The RLI corporate identidy implemented as a theme for Latex document class [beamer](https://en.wikibooks.org/wiki/LaTeX/Presentations). Usable with both, LaTeX and Markdown through [pandoc](https://pandoc.org/). Here are some [example slides](https://speakerdeck.com/gplssm/rli-latex-beamer-example-slides)  
 
 ![](img/example_slides.gif)
 
