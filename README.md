@@ -106,6 +106,8 @@ pandoc -t beamer --filter pandoc-citeproc --bibliography bib/example.bib --pdf-e
 ```
 Have a look into `example_slides.md` for details.
 
+Note: If you use **pandoc version <2.0**, replace `--pdf-engine` by `--latex-engine=` to process the Markdown file.
+
 # Contributing
 
 Contributions are welcome! Read [CONTRIBUTING](https://github.com/rl-institut/beamer_theme/blob/master/CONTRIBUTING.md) for developing workflow.
