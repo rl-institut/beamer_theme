@@ -13,6 +13,14 @@ sudo apt install texlive-latex-recommended # for latex beamer
 sudo apt install texlive-fonts-extra # maybe required for fonts
 ```
 
+Note: If you don't want to litter your system with the countless fonts from `texlive-fonts-extra` (a full list of the
+Ubuntu package can be found [here](https://packages.ubuntu.com/xenial/texlive-fonts-extra)), you can get single
+fonts by installing the specific system package. E.g. to install Roboto, use
+
+```
+sudo apt install fonts-roboto-hinted
+```
+
 ## Extra packages for markdown (pandoc)
 
 ```
