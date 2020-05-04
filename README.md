@@ -27,7 +27,7 @@ sudo apt install fonts-roboto-hinted
 sudo apt install pandoc
 ```
 
-When using pandoc, it's recommended to use a version >2.0. Ubuntu/debian user should know that pandoc from official sources might be outdated. Consider to install a [newer version](https://pandoc.org/installing.html).
+When using pandoc, it's recommended to use a version >2.0. Ubuntu/Debian user should know that pandoc from official sources might be outdated. Consider to install a [newer version](https://pandoc.org/installing.html).
 
 For using citations with pandoc pandoc-citeproc is required
 
