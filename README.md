@@ -4,13 +4,13 @@ The RLI corporate identidy implemented as a theme for Latex document class [beam
 
 # Installation
 
-You need to have some Latex packages installed. Linux users use
+You need to have some Latex packages installed. Linux users may use
 
 ```
-sudo apt get install texlive
+sudo apt install texlive
 sudo apt install texlive-xetex # to use unicode-aware xelatex
 sudo apt install texlive-latex-recommended # for latex beamer
-sudo apt get install texlive-fonts-extra # maybe required for fonts
+sudo apt install texlive-fonts-extra # maybe required for fonts
 ```
 
 ## Extra packages for markdown (pandoc)
