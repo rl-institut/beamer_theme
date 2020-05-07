@@ -96,7 +96,7 @@ When using Markdown (`.md`) files for creating slides, include the following in 
 Convert `.md` files to beamer PDF slides by
 
 ```
-pandoc -t beamer --latex-engine=xelatex -o example-slides.pdf example-slides.md 
+pandoc -t beamer --pdf-engine=xelatex -o example-slides.pdf example-slides.md 
 ```
 
 To enable processing of citations use
