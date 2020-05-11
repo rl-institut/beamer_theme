@@ -104,9 +104,22 @@ To enable processing of citations use
 ```
 pandoc -t beamer --filter pandoc-citeproc --bibliography bib/example.bib --pdf-engine=xelatex -o example-slides.pdf example-slides.md
 ```
-Have a look into `example_slides.md` for details.
 
 Note: If you use **pandoc version <2.0**, replace `--pdf-engine` by `--latex-engine=` to process the Markdown file.
+
+Have a look into `example_slides.md` for details and examples.
+
+### Bibliography style
+
+For a custom reference list format, you can download a
+[Citation Style Language](https://citationstyles.org/) (CSL) file from
+[zotero](https://www.zotero.org/styles) to your `./bib` directory. Activate the
+style by passing the option `--csl bib/<STYLE_FILE>.csl` to pandoc, e.g.
+`--csl bib/chicago-author-date-de.csl`.
+
+To generate a full bibliography, regardless of whether the entries were
+referenced on the slides or not, use the option `nocite: '@*'` in the header
+of the front matter.
 
 # Contributing
 
