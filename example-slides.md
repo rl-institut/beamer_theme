@@ -283,8 +283,32 @@ header-includes:
 \insertendpagecontent
 ```
 
+# How to add references
+
+You can simply add references by adding the following to the end of the presentation (pandoc-citeproc will do the rest):
+
+``` markdown
+# References
+```
+
+To get a hanging indent and a neater layout, you may wanna use something like (output see last slide):
+
+``` markdown
+# References
+
+\small
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+\setlength{\parskip}{8pt}
+``` 
+
 # {.plain}
 
 \insertendpagecontent
 
 # References
+
+\small
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+\setlength{\parskip}{8pt}
