@@ -1,6 +1,6 @@
 ---
 author:
-- Guido Pleßmann
+- Teo Retiker
 title: The RLI \LaTeX{} beamer theme
 subtitle: ...finally overcoming MS Powerpoint
 institute: Reiner Lemoine Institut
@@ -8,11 +8,15 @@ classoption: aspectratio=169
 date: \today
 theme: rli
 urlcolor: rlilinkcolor
+linkcolor: rlilinkcolor
+citecolor: rlilinkcolor
+bibliography: bib/example.bib
+link-citations: true
 header-includes:
 - |
   \newcommand{\tel}{+49 (0)30 1208 434 72}
-  \newcommand{\email}{guido.plessmann@rl-institut.de}
-  \newcommand{\twitter}{\href{https://twitter.com/gplssm}{@gplssm}}
+  \newcommand{\email}{teo.retiker@rl-institut.de}
+  \newcommand{\twitter}{\href{https://twitter.com/rl_institut}{@rl\_institut}}
   \newcommand{\finalstatement}{Enjoy stating a final statement ;-)}
   \tikzset{
   invisible/.style={opacity=0},
@@ -22,6 +26,24 @@ header-includes:
   },
   }
   \usepackage{blindtext}
+  \usepackage{listings}
+  \lstloadlanguages{Python}
+  \newsavebox{\lstprebreakbox}
+  \savebox{\lstprebreakbox}{\color{gray}\tiny$\searrow$}
+  \lstset{
+    basicstyle=\scriptsize\sffamily,
+    numberstyle=\color{gray},
+    stringstyle=\color[HTML]{933797},
+    commentstyle=\color[HTML]{228B22}\sffamily,
+    emph={[2]from,import,pass,return}, emphstyle={[2]\color[HTML]{DD52F0}},
+    emph={[3]range}, emphstyle={[3]\color[HTML]{D17032}},
+    emph={[4]for,in,def}, emphstyle={[4]\color{blue}},
+    showstringspaces=false,
+    breaklines=true,
+    prebreak=\usebox{\lstprebreakbox},
+    numbers=left,
+    xleftmargin=15pt
+  }
 ---
 
 # A new frame
@@ -240,7 +262,8 @@ Frame with no title
 # Command to build these slides
 
 ~~~ bash
- pandoc -t beamer--pdf-engine=xelatex -o example-slides.pdf example-slides.md
+pandoc -t beamer --listings --citeproc --pdf-engine=xelatex \
+  -o example-slides.pdf example-slides.md
 ~~~
 
 with frontmatter
@@ -262,8 +285,8 @@ Requires the following \LaTeX{} code in `- header-includes`
 header-includes:
 - |
   \newcommand{\tel}{+49 (0)30 1208 434 72}
-  \newcommand{\email}{guido.plessmann@rl-institut.de}
-  \newcommand{\twitter}{\href{https://twitter.com/gplssm}{@gplssm}}
+  \newcommand{\email}{teo.retiker@rl-institut.de}
+  \newcommand{\twitter}{\href{https://twitter.com/rl_institut}{@rl\_institut}}
   \newcommand{\finalstatement}{Enjoy stating a final statement ;-)}
 ---
 ~~~
@@ -285,7 +308,9 @@ header-includes:
 
 # How to add references
 
-You can simply add references by adding the following to the end of the presentation (pandoc-citeproc will do the rest):
+Set `bibliography: bib/example.bib` in the front matter, build with `--citeproc`
+(pandoc < 2.11: `--filter pandoc-citeproc`), and add the following to the end of the
+presentation; citeproc fills in the reference list:
 
 ``` markdown
 # References

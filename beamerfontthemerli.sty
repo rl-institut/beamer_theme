@@ -12,7 +12,13 @@
 \setbeamerfont{description body}{size=\large,series=\mdseries}
 \setbeamerfont{description item}{size=\Large,series=\bfseries}
 
-\setsansfont[BoldFont=Roboto-Bold]{Roboto-Light}
+% House font (CD 2025): Nunito Sans. Requires the font installed on the system
+% (Regular/Bold/Italic/BoldItalic + ExtraBold for headings). Loaded via fontspec,
+% so building requires XeLaTeX (or LuaLaTeX). Do NOT use the pdfLaTeX-only nunito.sty.
+\setsansfont{Nunito Sans}
+
+% ExtraBold family for headings (title page + frame titles)
+\newfontfamily\rliheadingfont{Nunito Sans ExtraBold}
 
 \usebeamerfont{normal text}
 \mode

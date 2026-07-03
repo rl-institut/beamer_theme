@@ -14,7 +14,7 @@
   emph={[4]for,in,def}, emphstyle={[4]\color{blue}},
   showstringspaces=false,
   breaklines=true,
-  prebreak=\mbox{{\color{gray}\tiny$\searrow$}},
+  prebreak=\usebox{\lstprebreakbox}, % pre-built box; a bare \color here breaks inside listings' \discretionary
   numbers=left,
   xleftmargin=15pt
 }
@@ -36,20 +36,25 @@ alt/.code args={<#1>#2#3}{%
 
 \newsavebox{\codebox}% For storing listings
 
+% Pre-built line-break marker for listings: \color must be baked into a box here,
+% because a bare \color inside prebreak breaks when listings wraps a line.
+\newsavebox{\lstprebreakbox}
+\savebox{\lstprebreakbox}{\color{gray}\tiny$\searrow$}
+
 \hypersetup{
   colorlinks,
-  urlcolor=rlilinkcolor
+  allcolors=rlilinkcolor
 }
 
 \title{The RLI \LaTeX{} beamer theme}
 \subtitle{\ldots finally overcoming MS Powerpoint}
-\author{Guido Pleßmann}
+\author{Teo Retiker}
 \date{\today}
 \institute{Reiner Lemoine Institut}
 
 \newcommand{\tel}{+49 (0)30 1208 434 72}
-\newcommand{\email}{guido.plessmann@rl-institut.de}
-\newcommand{\twitter}{\href{https://twitter.com/gplssm}{@gplssm}}
+\newcommand{\email}{teo.retiker@rl-institut.de}
+\newcommand{\twitter}{\href{https://twitter.com/rl_institut}{@rl\_institut}}
 \newcommand{\finalstatement}{Enjoy stating a final statement ;-)}
 
 \begin{document}
@@ -356,8 +361,8 @@ Requires the following \LaTeX{} code in your preamble
 
 \begin{lstlisting}[language=TeX]
 \newcommand{\tel}{+49 (0)30 1208 434 72}
-\newcommand{\email}{guido.plessmann@rl-institut.de}
-\newcommand{\twitter}{\href{https://twitter.com/gplssm}{@gplssm}}
+\newcommand{\email}{teo.retiker@rl-institut.de}
+\newcommand{\twitter}{\href{https://twitter.com/rl_institut}{@rl\_institut}}
 \newcommand{\finalstatement}{Enjoy stating a final statement ;-)}
 \end{lstlisting}
 

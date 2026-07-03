@@ -11,6 +11,10 @@
 \usecolortheme{rli}
 \usefonttheme{rli}
 
+% Colored links in the RLI blue (no ugly boxes). Covers url, internal and
+% citation links, so \cite references are blue instead of hyperref's default green.
+\hypersetup{colorlinks=true,linkcolor=rlilinkcolor,citecolor=rlilinkcolor,urlcolor=rlilinkcolor}
+
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]
 
@@ -26,8 +30,11 @@
       \end{center}};}
       \fi
 
-  \node[anchor=south west, draw=none] (picture) at (0,3.4) {\includegraphics[width=3cm]{img/CC-License-1.png}};
-  \node[anchor=south west, draw=none,text width=.55\textwidth] at (0,1.1) {\textbf{License}\par \small Except where otherwise noted, this work and its content (texts and illustrations) are licensed under the Attribution 4.0 International (CC BY 4.0).
+  \node[anchor=south west, draw=none] (picture) at (0,3.85) {\includegraphics[width=3cm]{img/CC-License-1.png}};
+  % Pin the License block's top just below the CC logo (bottom edge at y=3.85) so it
+  % never overlaps the logo, and leave room above the citation line, regardless of
+  % how many lines the text wraps to (xelatex wraps one line more than pandoc).
+  \node[anchor=north west, draw=none,text width=.55\textwidth] at (0,3.65) {\textbf{License}\par \small Except where otherwise noted, this work and its content (texts and illustrations) are licensed under the Attribution 4.0 International (CC BY 4.0).
 
 See license text for further information.};
 	
@@ -41,7 +48,7 @@ See license text for further information.};
   	Web: \href{https://reiner-lemoine-institut.de}{www.reiner-lemoine-institut.de}\par
   	Twitter: \twitter
   	};
-	\node[above of=contact.north, anchor=south west, node distance=1mm] (picture) at (0.58\textwidth,3.35) {\includegraphics[width=1.3cm]{img/Speech_Bubble_290670_cropped.pdf}};
+	\node[above of=contact.north, anchor=south west, node distance=1mm] (picture) at (0.58\textwidth,3.8) {\includegraphics[width=1.3cm]{img/Speech_Bubble_290670_cropped.pdf}};
 
   \end{tikzpicture}
 }

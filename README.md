@@ -13,13 +13,22 @@ sudo apt install texlive-latex-recommended # for latex beamer
 sudo apt install texlive-fonts-extra # maybe required for fonts
 ```
 
-Note: If you don't want to litter your system with the countless fonts from `texlive-fonts-extra` (a full list of the
-Ubuntu package can be found [here](https://packages.ubuntu.com/xenial/texlive-fonts-extra)), you can get single
-fonts by installing the specific system package. E.g. to install Roboto, use
+## Font
+
+The theme uses the RLI house font **Nunito Sans** (Corporate Design 2025), loaded via
+`fontspec`, so slides must be built with **XeLaTeX** (or LuaLaTeX) — not `pdflatex`.
+The font is **not** part of this repository and must be installed on your system.
+Download Nunito Sans (e.g. from [Google Fonts](https://fonts.google.com/specimen/Nunito+Sans),
+or the RLI Corporate Design package), which provides the required faces — Regular, Bold,
+Italic, Bold Italic, and ExtraBold (used for headings) — then install them, e.g. on Linux:
 
 ```
-sudo apt install fonts-roboto-hinted
+mkdir -p ~/.local/share/fonts
+cp NunitoSans-*.ttf ~/.local/share/fonts/   # from your download
+fc-cache -f
 ```
+
+Verify they are found with `fc-list | grep -i nunito`.
 
 ## Extra packages for markdown (pandoc)
 
@@ -96,16 +105,23 @@ When using Markdown (`.md`) files for creating slides, include the following in 
 Convert `.md` files to beamer PDF slides by
 
 ```
-pandoc -t beamer --pdf-engine=xelatex -o example-slides.pdf example-slides.md 
+pandoc -t beamer --listings --pdf-engine=xelatex -o example-slides.pdf example-slides.md
 ```
 
-To enable processing of citations use
+The `--listings` flag makes pandoc typeset code blocks with the `listings` package
+(line numbers, syntax colors) matching the LaTeX build, instead of its default
+highlighter. The corresponding `\lstset` lives in the front matter's `header-includes`.
+
+To enable processing of citations, set `bibliography: bib/example.bib` in the front
+matter and add `--citeproc`
 
 ```
-pandoc -t beamer --filter pandoc-citeproc --bibliography bib/example.bib --pdf-engine=xelatex -o example-slides.pdf example-slides.md
+pandoc -t beamer --listings --citeproc --pdf-engine=xelatex -o example-slides.pdf example-slides.md
 ```
 
-Note: If you use **pandoc version <2.0**, replace `--pdf-engine` by `--latex-engine=` to process the Markdown file.
+Note: `--citeproc` requires pandoc ≥ 2.11. On older pandoc, replace it with
+`--filter pandoc-citeproc` (install the separate `pandoc-citeproc` package). If you
+use **pandoc version <2.0**, also replace `--pdf-engine` by `--latex-engine=`.
 
 Have a look into `example_slides.md` for details and examples.
 
